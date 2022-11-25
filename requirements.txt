@@ -1,0 +1,6 @@
+fastapi
+jinja2
+uvicorn
+pymongo[snappy,srv,tls]
+motor
+pydantic
