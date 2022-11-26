@@ -6,7 +6,7 @@ import { useState } from 'react';
 function RestaurantCard({ restaurantData }) {
 
   return (
-    <div className="font-clash my-5">
+    <div  className="font-clash my-5">
 
       <div className="underline underline-offset-[4px]">
         {restaurantData.Name}
@@ -15,7 +15,13 @@ function RestaurantCard({ restaurantData }) {
         {restaurantData.Type}
       </div>
       <div className='font-clash pl-4 font-thin text-sm'>
+        {restaurantData["Street Address"]}
+      </div>
+      <div className='font-clash pl-4 font-thin text-sm'>
         {restaurantData.Location}
+      </div>
+      <div className='font-clash pl-4 font-thin text-sm'>
+        {restaurantData["Price_Range"]}
       </div>
     </div>
   )
@@ -23,7 +29,7 @@ function RestaurantCard({ restaurantData }) {
 function NavBar() {
 
   return (
-    <nav className="relative w-full flex flex-wrap items-center justify-between py-2 bg-gray-100 font-semibold">
+    <nav className="font-clash relative w-full flex flex-wrap items-center justify-between py-2 bg-gray-100 font-semibold">
       <div className="container-fluid w-full flex flex-wrap items-center justify-between px-3 ">
         <a className="flex items-center" href="/">
           CookReview
@@ -73,12 +79,12 @@ function App() {
             </svg>
 
           </span>
-          <input onKeyPress={handleKeyPress} className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm font-light" placeholder="Search for anything..." type="text" name="search" />
+          <input onKeyPress={handleKeyPress} className="font-clash placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm font-light" placeholder="Search for anything..." type="text" name="search" />
         </label>
       </div>
 
       <div className='text-black mx-8 my-2'>
-        {data.data.map((val) => (<RestaurantCard restaurantData={val} />))}
+        {data.data.map((val) => (<RestaurantCard key={val.id} restaurantData={val} />))}
       </div>
 
 

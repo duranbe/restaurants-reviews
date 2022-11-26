@@ -47,7 +47,9 @@ async def main(request: Request):
                          "_id": 0,
                          "Name": 1,
                          "Type": 1,
-                         "Location": 1}
+                         "Location": 1,
+                         "Price_Range": 1,
+                         "Street Address": 1}
         }
     ]).to_list(length=None))
 
