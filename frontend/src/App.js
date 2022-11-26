@@ -6,7 +6,7 @@ import { useState } from 'react';
 function RestaurantCard({ restaurantData }) {
 
   return (
-    <div  className="my-5">
+    <div className="my-5">
 
       <div className="underline underline-offset-[3px]  font-clash-medium hover:italic">
         {restaurantData.Name}
@@ -44,6 +44,11 @@ function App() {
 
   const [data, setData] = useState({ data: [] });
 
+  const [isVegan,setVegan] = useState(false);
+
+  function toggleVegan(element){
+    setVegan(element.target.checked);
+  }
 
   function handleKeyPress(e) {
 
@@ -51,7 +56,8 @@ function App() {
 
       axios.get('http://localhost:8000/search', {
         params: {
-          keyword: e.target.value
+          keyword: e.target.value,
+          vegan: isVegan,
         }
       })
         .then(function (response) {
@@ -66,8 +72,9 @@ function App() {
     }
 
   }
-  //<!--
 
+
+  
   return (
     <div className="mx-5">
       <NavBar />
@@ -80,7 +87,18 @@ function App() {
 
           </span>
           <input onKeyPress={handleKeyPress} className="font-clash-regular placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm font-light" placeholder="Search for anything..." type="text" name="search" />
+
         </label>
+        <div className="flex items-center mt-2 ml-3">
+          <div className="flex">
+            <input type="checkbox" id="choose-me" className="peer hidden" onChange={toggleVegan} />
+            <label className="select-none cursor-pointer rounded-lg border-1
+            py-1 px-2 font-clash-medium transition-colors duration-100 ease-in-out
+            bg-slate-500 text-gray-50 text-sm
+           peer-checked:bg-gray-200 peer-checked:text-gray-900 peer-checked:border-slate-200">Vegan</label>
+          </div>
+        </div>
+
       </div>
 
       <div className='text-black mx-8 my-2'>

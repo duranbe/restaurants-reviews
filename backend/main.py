@@ -25,10 +25,11 @@ db = client["restaurants"]
 @app.get("/search")
 async def main(request: Request):
     kw = request.query_params.get('keyword', None)
+    is_vegan = request.query_params.get('vegan', None)
     
     if kw is None or len(kw)<1:
         raise HTTPException(status_code=400, detail="Wrong keyword search")
-
+ 
     results = (await db["restaurants-reviews"].aggregate([
         {
             "$search": {
