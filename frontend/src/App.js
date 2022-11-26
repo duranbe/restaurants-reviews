@@ -1,6 +1,25 @@
 import './App.css';
 import axios from 'axios';
+import { useState } from 'react';
 
+
+function RestaurantCard({ restaurantData }) {
+
+  return (
+    <div className="font-clash my-5">
+
+      <div className="underline underline-offset-[4px]">
+        {restaurantData.Name}
+      </div>
+      <div className='font-clash pl-4 font-thin text-sm'>
+        {restaurantData.Type}
+      </div>
+      <div className='font-clash pl-4 font-thin text-sm'>
+        {restaurantData.Location}
+      </div>
+    </div>
+  )
+}
 function NavBar() {
 
   return (
@@ -17,28 +36,31 @@ function NavBar() {
 function App() {
 
 
-  function handleKeyPress(e){
-    
-    if(e.key === "Enter"){
-      console.log(e.target.value);
+  const [data, setData] = useState({ data: [] });
+
+
+  function handleKeyPress(e) {
+
+    if (e.key === "Enter") {
+
       axios.get('http://localhost:8000/search', {
         params: {
           keyword: e.target.value
         }
       })
-      .then(function (response) {
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-      .finally(function () {
-        // always executed
-      });
+        .then(function (response) {
+
+          setData({ data: response.data });
+
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+
     }
 
   }
-
+  //<!--
 
   return (
     <div className="mx-5">
@@ -53,6 +75,10 @@ function App() {
           </span>
           <input onKeyPress={handleKeyPress} className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm font-light" placeholder="Search for anything..." type="text" name="search" />
         </label>
+      </div>
+
+      <div className='text-black mx-8 my-2'>
+        {data.data.map((val) => (<RestaurantCard restaurantData={val} />))}
       </div>
 
 
