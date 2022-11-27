@@ -64,8 +64,12 @@ async def main(request: Request):
                          "Type": 1,
                          "Location": 1,
                          "Reviews": {
-                "$replaceOne": {"input": "$Reviews", "find": " bubbles", "replacement": ""}
-            },
+                                    "$replaceOne": {
+                                        "input": "$Reviews", 
+                                        "find": " bubbles", 
+                                        "replacement": ""
+                                        }
+                                    },
                 "Price_Range": 1,
                 "Street Address": 1,
                 "score": {"$meta": "searchScore"}
