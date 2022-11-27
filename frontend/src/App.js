@@ -22,6 +22,9 @@ function RestaurantCard({ restaurantData }) {
         {restaurantData.Location}
       </div>
       <div className='font-clash-medium pl-3 font-thin text-sm'>
+        {"Reviews :  " + restaurantData["Reviews"]}
+      </div>
+      <div className='font-clash-medium pl-3 font-thin text-sm'>
         {restaurantData["Price_Range"]}
       </div>
     </div>
@@ -55,6 +58,8 @@ function App() {
 
   function handleKeyPress(e) {
 
+    setData({ data: [] })
+
     if (e.key === "Enter") {
 
       setLoadingState(true);
@@ -71,6 +76,7 @@ function App() {
 
           setLoadingState(false)
           setData({ data: response.data });
+          console.log(response.data)
 
         })
         .catch(function (error) {

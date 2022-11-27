@@ -22,14 +22,15 @@ client = motor.motor_asyncio.AsyncIOMotorClient(
 
 db = client["restaurants"]
 
+
 @app.get("/search")
 async def main(request: Request):
     kw = request.query_params.get('keyword', None)
     is_vegan = request.query_params.get('vegan', None)
-    
-    if kw is None or len(kw)<1:
+
+    if kw is None or len(kw) < 1:
         raise HTTPException(status_code=400, detail="Wrong keyword search")
- 
+
     results = (await db["restaurants-reviews"].aggregate([
         {
             "$search": {
@@ -62,15 +63,17 @@ async def main(request: Request):
                          "Name": 1,
                          "Type": 1,
                          "Location": 1,
-                         "Price_Range": 1,
-                         "Street Address": 1,
-                         "score": {"$meta": "searchScore"}
-                         }
+                         "Reviews": {
+                "$replaceOne": {"input": "$Reviews", "find": " bubbles", "replacement": ""}
+            },
+                "Price_Range": 1,
+                "Street Address": 1,
+                "score": {"$meta": "searchScore"}
+            }
         }
     ]).to_list(length=None))
 
     return results
-
 
 
 # No meant to be used for now
@@ -98,10 +101,9 @@ async def autocomplete_results(request: Request):
                 "id": {'$toString': "$_id"},
                 "_id": 0,
                 'Type': 1,
-                "highlights": { "$meta": "searchHighlights" }
+                "highlights": {"$meta": "searchHighlights"}
             }
         }
     ]).to_list(length=None))
-
 
     return results
