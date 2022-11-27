@@ -8,7 +8,7 @@ function RestaurantCard({ restaurantData }) {
   return (
     <div className="my-5">
 
-      <div className="underline underline-offset-[3px]  font-clash-medium hover:italic">
+      <div className="underline underline-offset-[3px]  font-clash-medium hover:italic cursor-pointer">
         {restaurantData.Name}
       </div>
       <div className='font-clash-medium pl-3 font-thin text-sm'>
@@ -29,9 +29,9 @@ function RestaurantCard({ restaurantData }) {
 function NavBar() {
 
   return (
-    <nav className="font-clash-bold relative w-full flex flex-wrap items-center justify-between py-2 bg-gray-100">
+    <nav className="font-clash-bold border-gray-300 relative w-full flex flex-wrap items-center justify-between py-2 bg-gray-100">
       <div className="container-fluid w-full flex flex-wrap items-center justify-between px-3 ">
-        <a className="flex items-center" href="/">
+        <a className="flex items-center text-2xl" href="/">
           CookReview
         </a>
       </div>
@@ -44,9 +44,9 @@ function App() {
 
   const [data, setData] = useState({ data: [] });
 
-  const [isVegan,setVegan] = useState(false);
+  const [isVegan, setVegan] = useState(false);
 
-  function toggleVegan(element){
+  function toggleVegan(element) {
     setVegan(element.target.checked);
   }
 
@@ -74,11 +74,11 @@ function App() {
   }
 
 
-  
+
   return (
     <div className="mx-5">
       <NavBar />
-      <div className="mt-4 mb-8 mx-10">
+      <div className="mt-4 mb-8 mx-10 ">
         <label className="relative block font-light">
           <span className="absolute inset-y-0 left-0 flex items-center pl-2">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
@@ -86,27 +86,40 @@ function App() {
             </svg>
 
           </span>
-          <input onKeyPress={handleKeyPress} className="font-clash-regular placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm font-light" placeholder="Search for anything..." type="text" name="search" />
+          <input onKeyPress={handleKeyPress} className="h-12 font-clash-regular placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm font-light" placeholder="Search for anything..." type="text" name="search" />
 
         </label>
         <div className="flex items-center mt-2 ml-3">
           <div className="flex">
             <input type="checkbox" id="choose-me" className="peer hidden" onChange={toggleVegan} />
-            <label className="select-none cursor-pointer rounded-lg border-1
+            <label htmlFor="choose-me" className="select-none cursor-pointer rounded-lg border-1
             py-1 px-2 font-clash-medium transition-colors duration-100 ease-in-out
-            bg-slate-500 text-gray-50 text-sm
-           peer-checked:bg-gray-200 peer-checked:text-gray-900 peer-checked:border-slate-200">Vegan</label>
+            bg-slate-500 text-gray-50 text-m border-2 hover:italic
+           peer-checked:bg-gray-200 peer-checked:text-gray-900 peer-checked:border-slate-400">Vegan</label>
           </div>
         </div>
 
       </div>
+      <div className='flex flex-col justify-center items-center'>
 
-      <div className='text-black mx-8 my-2'>
-        {data.data.map((val) => (<RestaurantCard key={val.id} restaurantData={val} />))}
+
+        <div className='text-black font-clash-semibold text-5xl mx-8 my-2 underline underline-offset-4 decoration-tangerine decoration-2' >
+          <div>Find your next favorite place </div>
+
+        </div>
+        <img className='max-w-5xl h-auto' src="./svg/DrawKit-cooking-kitchen-food-vector-illustrations-03.svg" alt="kitchen img"></img>
+
+        <div className='text-black mx-8 my-2'>
+          {data.data.map((val) => (<RestaurantCard key={val.id} restaurantData={val} />))}
+        </div>
       </div>
 
 
+      <footer className='font-clash-regular text-center'>
+        About us 
+      </footer>
     </div>
+
   );
 }
 
