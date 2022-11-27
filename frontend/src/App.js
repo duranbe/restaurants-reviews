@@ -118,10 +118,15 @@ function App() {
         <div className='flex flex-col justify-center items-center'>
 
 
-          <div className='text-black font-clash-semibold text-5xl mx-8 my-2 underline underline-offset-4 decoration-tangerine decoration-2' >
+          <div className='text-black font-clash-semibold text-5xl mx-8 underline underline-offset-4 decoration-tangerine decoration-2' >
             <div>Find your next favorite place </div>
 
           </div>
+          <div className='text-slate-600 font-clash-regular text-2xl mx-8' >
+            <div>Discover exquisites restaurants thanks to our reviews-powered search engine</div>
+
+          </div>
+          
           <img className='max-w-5xl h-auto' src="./svg/DrawKit-cooking-kitchen-food-vector-illustrations-03.svg" alt="kitchen img"></img>
 
 
@@ -143,7 +148,7 @@ function App() {
         </div>
 
       </div>
-      <footer className='font-clash-regular text-center'>
+      <footer className='font-clash-extralight font-bold text-center mt-16'>
         About us
       </footer>
     </div>
