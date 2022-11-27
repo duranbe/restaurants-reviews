@@ -29,6 +29,7 @@ module.exports = {
       colors: {
         'tangerine': '#e57b07',
       },
+      
     },
   },
   plugins: [],
