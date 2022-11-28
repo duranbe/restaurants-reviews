@@ -1,47 +1,10 @@
 import './App.css';
 import axios from 'axios';
 import { useState } from 'react';
+import NavBar from './components/NavBar';
+import RestaurantCard from './components/RestaurantCard';
 
 
-
-function RestaurantCard({ restaurantData }) {
-
-  return (
-    <div className="my-3 p-3 hover:cursor-pointer hover:border-l-black hover:border-l-2 rounded-sm">
-
-      <div className="underline underline-offset-[3px]   text-xl font-clash-medium hover:italic cursor-pointer">
-        {restaurantData.Name}
-      </div>
-      <div className='font-clash-medium pl-3 font-thin text-lg'>
-        {restaurantData.Type}
-      </div>
-      <div className='font-clash-medium pl-3 font-thin text-lg'>
-        {restaurantData["Street Address"]}
-      </div>
-      <div className='font-clash-medium pl-3 font-thin text-lg'>
-        {restaurantData.Location}
-      </div>
-      <div className='font-clash-medium pl-3 font-thin text-lg'>
-        {"Reviews :  " + restaurantData["Reviews"]}
-      </div>
-      <div className='font-clash-medium pl-3 font-thin text-lg'>
-        {restaurantData["Price_Range"]}
-      </div>
-    </div>
-  )
-}
-function NavBar() {
-
-  return (
-    <nav className="font-clash-bold border-gray-300 relative w-full flex flex-wrap items-center justify-between py-2 bg-gray-100">
-      <div className="container-fluid w-full flex flex-wrap items-center justify-between px-3 ">
-        <a className="flex items-center text-2xl" href="/">
-          CookReview
-        </a>
-      </div>
-    </nav>
-  )
-}
 
 function App() {
 
