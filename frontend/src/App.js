@@ -5,7 +5,6 @@ import NavBar from './components/NavBar';
 import RestaurantCard from './components/RestaurantCard';
 
 
-
 function App() {
 
   const [data, setData] = useState({ data: [] });
@@ -104,12 +103,10 @@ function App() {
 
       </div>
 
-
       {isLandingPage &&
-        <div className='flex flex-col justify-center items-center'>
+        <div className='flex flex-col items-center'>
 
-
-          <div className='text-black font-clash-semibold text-5xl mx-8 mt-4 underline underline-offset-4 decoration-tangerine decoration-4' >
+          <div className='text-black font-clash-semibold text-5xl mx-8 mt-1 underline underline-offset-4 decoration-tangerine decoration-4' >
             <div>Find your next favorite place </div>
 
           </div>
@@ -117,11 +114,11 @@ function App() {
             <div>Discover exquisites restaurants thanks to our reviews-powered search engine</div>
           </div>
 
-         
-          <img className='max-w-5xl h-auto z-20' src="./svg/DrawKit-cooking-kitchen-food-vector-illustrations-03.svg" alt="kitchen img"></img>
-          <div className='blob bg-tangerine z-10 bottom-80 right-80  h-[200px] w-[200px]'></div>
-          <div className='blob bg-yellow-light z-10 bottom-[33rem] left-80 h-[400px] w-[400px] my-my rotate-90'></div>
-
+          <div className='container h-200 flex flex-col justify-center relative max-w-5xl h-auto '>
+              <img  className="z-20" src="./svg/DrawKit-cooking-kitchen-food-vector-illustrations-03.svg" alt="kitchen img"></img>
+            <div className='blob absolute bg-tangerine z-10  bottom-80 left-10  h-[15rem] w-[15rem]'></div>
+            <div className='blob absolute bg-yellow-light z-10  bottom-[36rem] left-[40rem] md:h-[20rem] md:w-[20rem]  sm:h-[5rem] sm:w-[5rem] rotate-90'></div>
+          </div>
         </div>
 
       }
@@ -140,7 +137,7 @@ function App() {
         </div>
 
       </div>
-      <footer className='font-clash-extralight font-bold text-center mt-16'>
+      <footer className='font-clash-extralight font-bold text-center mb-6'>
         About us
       </footer>
     </div>
