@@ -47,6 +47,7 @@ function App() {
 
   const [data, setData] = useState({ data: [] });
   const [isVegan, setVegan] = useState(false);
+  const [isNewYork, setNewYork] = useState(false);
 
   const [isLoading, setLoadingState] = useState(false);
   const [isLandingPage, setLandingPage] = useState(true);
@@ -54,6 +55,10 @@ function App() {
 
   function toggleVegan(element) {
     setVegan(element.target.checked);
+  }
+
+  function toggleNewYork(element) {
+    setNewYork(element.target.checked);
   }
 
   function handleKeyPress(e) {
@@ -77,6 +82,7 @@ function App() {
         params: {
           keyword: searchValue,
           vegan: isVegan,
+          nyc: isNewYork,
         }
       })
         .then(function (response) {
@@ -125,7 +131,7 @@ function App() {
            peer-checked:bg-gray-200 peer-checked:text-gray-900 peer-checked:border-slate-400">Vegan</label>
           </div>
           <div className="flex mx-1">
-            <input type="checkbox" id="choose-nyc" className="peer hidden" onChange={toggleVegan} />
+            <input type="checkbox" id="choose-nyc" className="peer hidden" onChange={toggleNewYork} />
             <label htmlFor="choose-nyc" className="select-none cursor-pointer rounded-lg border-1
             py-1 px-2 font-clash-medium transition-colors duration-100 ease-in-out
             bg-tangerine text-gray-50 text-m border-2 
@@ -140,7 +146,7 @@ function App() {
         <div className='flex flex-col justify-center items-center'>
 
 
-          <div className='text-black font-clash-semibold text-5xl mx-8 mt- underline underline-offset-4 decoration-tangerine decoration-4' >
+          <div className='text-black font-clash-semibold text-5xl mx-8 mt-4 underline underline-offset-4 decoration-tangerine decoration-4' >
             <div>Find your next favorite place </div>
 
           </div>
