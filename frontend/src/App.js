@@ -65,16 +65,16 @@ function App() {
 
     setData({ data: [] })
 
-   
-    if (e.key === "Enter" || e.type==="click") {
+
+    if (e.key === "Enter" || e.type === "click") {
 
       setLoadingState(true);
       setLandingPage(false);
-      
+
       let searchValue;
-      if(e.type === "click"){
+      if (e.type === "click") {
         searchValue = document.getElementById("search-bar").value;
-      }else{
+      } else {
         searchValue = e.target.value;
       }
 
@@ -109,7 +109,7 @@ function App() {
       <div className="mt-4 mb-2 mx-10">
         <label className="relative block font-light text-xl5">
 
-          <input autoComplete="off"  id="search-bar" onKeyPress={handleKeyPress} className="h-12 font-clash-regular 
+          <input autoComplete="off" id="search-bar" onKeyPress={handleKeyPress} className="h-12 font-clash-regular 
           placeholder:italic
           
            placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md
@@ -150,13 +150,14 @@ function App() {
             <div>Find your next favorite place </div>
 
           </div>
-          <div className='text-slate-600 font-clash-regular text-2xl mx-8' >
+          <div className='text-slate-600 font-clash-regular text-2xl mx-8 z-20' >
             <div>Discover exquisites restaurants thanks to our reviews-powered search engine</div>
-
           </div>
-          
-          <img className='max-w-5xl h-auto' src="./svg/DrawKit-cooking-kitchen-food-vector-illustrations-03.svg" alt="kitchen img"></img>
 
+         
+          <img className='max-w-5xl h-auto z-20' src="./svg/DrawKit-cooking-kitchen-food-vector-illustrations-03.svg" alt="kitchen img"></img>
+          <div className='blob bg-tangerine z-10 bottom-80 right-80  h-[200px] w-[200px]'></div>
+          <div className='blob bg-yellow-light z-10 bottom-[33rem] left-80 h-[400px] w-[400px] my-my rotate-90'></div>
 
         </div>
 
@@ -172,7 +173,7 @@ function App() {
       }
       <div className='flex flex-col'>
         <div className='text-black mx-8 pl-12'>
-          {data.data.filter((val)=> val.normalizedScore>0.5).map((val) => (<RestaurantCard key={val.id} restaurantData={val} />))}
+          {data.data.filter((val) => val.normalizedScore > 0.5).map((val) => (<RestaurantCard key={val.id} restaurantData={val} />))}
         </div>
 
       </div>

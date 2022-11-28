@@ -3,7 +3,7 @@
         <style>.cls-1,.cls-2{fill:#F3F4F6;}.cls-2,.cls-6,.cls-7,.cls-8{stroke:#070707;}.cls-11,.cls-14,.cls-2,.cls-3,.cls-5,.cls-6,.cls-7,.cls-8,.cls-9{stroke-linecap:round;stroke-linejoin:round;}.cls-11,.cls-14,.cls-2,.cls-3,.cls-5,.cls-6,.cls-7{stroke-width:4px;}.cls-10,.cls-3,.cls-9{fill:#efaf00;}.cls-11,.cls-3,.cls-9{stroke:#000;}.cls-4{fill:#1c0e0c;}.cls-13,.cls-5{fill:#c48270;}.cls-14,.cls-5{stroke:#0f0f0f;}.cls-11,.cls-14,.cls-6{fill:none;}.cls-7,.cls-8{fill:#e57b07;}.cls-8,.cls-9{stroke-width:2px;}.cls-12{fill:#070707;}</style>
     </defs>
     <g id="Layer_2" data-name="Layer 2">
-        <rect id="BACKGROUND" class="cls-1" x="10.08" y="5" width="1996.44" height="1477.37" />
+        <rect id="BACKGROUND" x="10.08" y="5" width="1996.44" fill="none" height="1477.37" />
     </g>
     <g id="Chars">
         <g id="COOK">
@@ -20,7 +20,7 @@
                 <path class="cls-4" d="M1046.2,604.08s3.48,33-37.58,56.19l-7.28-17.68L1024.81,599Z" />
                 <path class="cls-4" d="M926.26,621.56s13.2,46,51.74,49.14l-1.6-15.33-21.47-47.64Z" />
                 <path class="cls-3" d="M1002.15,647,1013,673a12.56,12.56,0,0,1-12.11,15.9H961.69a12.8,12.8,0,0,0-11.75,17.89l82.44,182.44c1.93,4.19-3.68,50.21-3.68,50.21l65.18,0" />
-                <circle class="cls-2" cx="976.64" cy="721.12" r="6.19" />
+            <circle class="cls-2" cx="976.64" cy="721.12" r="6.19" />
                 <circle class="cls-2" cx="1010.09" cy="721.12" r="6.19" />
                 <circle class="cls-2" cx="993.58" cy="764.07" r="6.19" />
                 <circle class="cls-2" cx="1027.02" cy="764.07" r="6.19" />
