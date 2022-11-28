@@ -28,6 +28,7 @@ module.exports = {
     extend: {
       colors: {
         'tangerine': '#e57b07',
+        'yellow-light': '#EFAF00',
       },
       
     },

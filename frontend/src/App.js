@@ -7,24 +7,24 @@ import { useState } from 'react';
 function RestaurantCard({ restaurantData }) {
 
   return (
-    <div className="my-3 p-3 hover:cursor-pointer hover:border-black hover:border-2 rounded-md">
+    <div className="my-3 p-3 hover:cursor-pointer hover:border-l-black hover:border-l-2 rounded-sm">
 
-      <div className="underline underline-offset-[3px]  font-clash-medium hover:italic cursor-pointer">
+      <div className="underline underline-offset-[3px]   text-xl font-clash-medium hover:italic cursor-pointer">
         {restaurantData.Name}
       </div>
-      <div className='font-clash-medium pl-3 font-thin text-sm'>
+      <div className='font-clash-medium pl-3 font-thin text-lg'>
         {restaurantData.Type}
       </div>
-      <div className='font-clash-medium pl-3 font-thin text-sm'>
+      <div className='font-clash-medium pl-3 font-thin text-lg'>
         {restaurantData["Street Address"]}
       </div>
-      <div className='font-clash-medium pl-3 font-thin text-sm'>
+      <div className='font-clash-medium pl-3 font-thin text-lg'>
         {restaurantData.Location}
       </div>
-      <div className='font-clash-medium pl-3 font-thin text-sm'>
+      <div className='font-clash-medium pl-3 font-thin text-lg'>
         {"Reviews :  " + restaurantData["Reviews"]}
       </div>
-      <div className='font-clash-medium pl-3 font-thin text-sm'>
+      <div className='font-clash-medium pl-3 font-thin text-lg'>
         {restaurantData["Price_Range"]}
       </div>
     </div>
@@ -103,11 +103,12 @@ function App() {
       <div className="mt-4 mb-2 mx-10">
         <label className="relative block font-light text-xl5">
 
-          <input autocomplete="off"  id="search-bar" onKeyPress={handleKeyPress} className="h-12 font-clash-regular placeholder:italic
+          <input autoComplete="off"  id="search-bar" onKeyPress={handleKeyPress} className="h-12 font-clash-regular 
+          placeholder:italic
           
            placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md
             p-2 shadow-sm focus:outline-none focus:border-sky-500 
-            focus:ring-sky-500 focus:ring-1 sm:text-sm font-light" placeholder="Search for anything..." type="text" name="search" />
+            focus:ring-sky-500 focus:ring-1 text-lg font-light" placeholder="Search for anything..." type="text" name="search" />
           <span className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer" onClick={handleKeyPress}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
@@ -120,14 +121,14 @@ function App() {
             <input type="checkbox" id="choose-me" className="peer hidden" onChange={toggleVegan} />
             <label htmlFor="choose-me" className="select-none cursor-pointer rounded-lg border-1
             py-1 px-2 font-clash-medium transition-colors duration-100 ease-in-out
-            bg-slate-500 text-gray-50 text-m border-2 
+            bg-tangerine text-gray-50 text-m border-2 
            peer-checked:bg-gray-200 peer-checked:text-gray-900 peer-checked:border-slate-400">Vegan</label>
           </div>
           <div className="flex mx-1">
             <input type="checkbox" id="choose-nyc" className="peer hidden" onChange={toggleVegan} />
             <label htmlFor="choose-nyc" className="select-none cursor-pointer rounded-lg border-1
             py-1 px-2 font-clash-medium transition-colors duration-100 ease-in-out
-            bg-slate-500 text-gray-50 text-m border-2 
+            bg-tangerine text-gray-50 text-m border-2 
            peer-checked:bg-gray-200 peer-checked:text-gray-900 peer-checked:border-slate-400">New York City</label>
           </div>
         </div>
@@ -139,7 +140,7 @@ function App() {
         <div className='flex flex-col justify-center items-center'>
 
 
-          <div className='text-black font-clash-semibold text-5xl mx-8 underline underline-offset-4 decoration-tangerine decoration-2' >
+          <div className='text-black font-clash-semibold text-5xl mx-8 mt- underline underline-offset-4 decoration-tangerine decoration-4' >
             <div>Find your next favorite place </div>
 
           </div>
