@@ -172,7 +172,7 @@ function App() {
       }
       <div className='flex flex-col'>
         <div className='text-black mx-8 pl-12'>
-          {data.data.map((val) => (<RestaurantCard key={val.id} restaurantData={val} />))}
+          {data.data.filter((val)=> val.normalizedScore>0.5).map((val) => (<RestaurantCard key={val.id} restaurantData={val} />))}
         </div>
 
       </div>

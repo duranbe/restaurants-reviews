@@ -2,7 +2,6 @@ from fastapi import FastAPI, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import motor.motor_asyncio
 
-
 app = FastAPI()
 
 origins = ["http://localhost:3000"]
@@ -26,88 +25,130 @@ db = client["restaurants"]
 @app.get("/search")
 async def main(request: Request):
     kw = request.query_params.get('keyword', None)
-    is_vegan = request.query_params.get('vegan', None)
+    is_vegan = request.query_params.get('vegan', False)
+    is_nyc = request.query_params.get('nyc', False)
 
     if kw is None or len(kw) < 1:
         raise HTTPException(status_code=400, detail="Wrong keyword search")
+
+    compound_parameters = \
+        {
+            "should": [{
+                "text": {
+                    "query": kw,
+                    'path': {
+                        'wildcard': '*'
+                    }
+                }
+            },
+                {
+                "text": {
+                    "query": kw,
+                    "path": ["Type", "Comments", "Name"],
+                    "score": {"boost": {"value": 3}}
+                }
+            }]
+        }
+
+    if is_vegan == "true":
+
+        compound_parameters['must'] = \
+            [{"text":
+                {
+                    "query": "vegan",
+                    "path": ["Type", "Comments"]
+                }
+              }]
+
+    if is_nyc == "true":
+
+        if "must" in compound_parameters:
+
+            prev_compound_parameters = compound_parameters["must"]
+
+            nyc_filter = {
+                "text":
+                    {
+                        "query": "New York City",
+                        "path": "Location"
+                    }
+            }
+
+            prev_compound_parameters.append(nyc_filter)
+
+            compound_parameters["must"] = prev_compound_parameters
+
+        else:
+
+            compound_parameters["must"] = {
+
+                "text":
+                    {
+                        "query": "New York City",
+                        "path": "Location"
+                    }
+            }
+
 
     results = (await db["restaurants-reviews"].aggregate([
         {
             "$search": {
                 'index': 'reviews',
-                "compound": {
-                    "should": [{
-                        "text": {
-                            "query": kw,
-                            'path': {
-                                'wildcard': '*'
-                            }
-                        }
-                    },
-                        {
-                        "text": {
-                            "query": kw,
-                            "path": "Type",
-                            "score": {"boost": {"value": 3}}
-                        }
-                    }]
-                }
-            }
+                "compound": compound_parameters}
         },
         {
             "$limit": 10
         },
         {
-            "$project": {"id": {'$toString': "$_id"},
-                         "_id": 0,
-                         "Name": 1,
-                         "Type": 1,
-                         "Location": 1,
-                         "Reviews": {
-                                    "$replaceOne": {
-                                        "input": "$Reviews", 
-                                        "find": " bubbles", 
-                                        "replacement": ""
-                                        }
-                                    },
-                "Price_Range": 1,
-                "Street Address": 1,
-                "score": {"$meta": "searchScore"}
-            }
-        }
-    ]).to_list(length=None))
-
-    return results
-
-
-# No meant to be used for now
-@app.get("/autocomplete")
-async def autocomplete_results(request: Request):
-
-    kw = request.query_params.get('keyword', None)
-
-    results = (await db["restaurants-reviews"].aggregate([
-        {
-            '$search': {
-                'index': 'reviews',
-                'autocomplete': {
-                    'path': 'Type',
-                    'query': kw,
-                },
-                "highlight": {
-                    "path": "Type"
+            "$addFields": {
+                "score": {
+                    "$meta": "searchScore"
                 }
             }
-        }, {
-            '$limit': 3
-        }, {
-            '$project': {
+        },
+        {
+            "$setWindowFields": {
+                "output": {
+                    "maxScore": {
+                        "$max": "$score"
+                    }
+                }
+            }
+        },
+        {
+            "$addFields": {
+                "normalizedScore": {
+                    "$divide": [
+                        "$score", "$maxScore"
+                    ]
+                }
+            }
+
+        },
+        {
+            "$project": {
+
+
+
+
                 "id": {'$toString': "$_id"},
                 "_id": 0,
-                'Type': 1,
-                "highlights": {"$meta": "searchHighlights"}
+                "Name": 1,
+                "Type": 1,
+                "Location": 1,
+                "Comments": 1,
+                "Reviews": {
+                    "$replaceOne": {
+                        "input": "$Reviews",
+                        "find": " bubbles",
+                        "replacement": ""
+                    }
+                },
+                "Price_Range": 1,
+                "Street Address": 1,
+                "score": {"$meta": "searchScore"},
+                "normalizedScore": 1,
             }
-        }
-    ]).to_list(length=None))
+        }]).to_list(length=None))
 
     return results
