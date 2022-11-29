@@ -85,7 +85,7 @@ function App() {
           </span>
         </label>
         <div className="flex items-center mt-2 ml-3">
-          <div className="flex mx-1">
+          <div className="flex mx-1 ">
             <input type="checkbox" id="choose-me" className="peer hidden" onChange={toggleVegan} />
             <label htmlFor="choose-me" className="select-none cursor-pointer rounded-lg border-1
             py-1 px-2 font-clash-medium transition-colors duration-100 ease-in-out
@@ -106,7 +106,7 @@ function App() {
       {isLandingPage &&
         <div className='flex flex-col items-center'>
 
-          <div className='text-black font-clash-semibold text-5xl mx-8 mt-1 underline underline-offset-4 decoration-tangerine decoration-4' >
+          <div className='text-black font-clash-semibold text-5xl mx-8 mt-1 z-20 underline underline-offset-4 decoration-tangerine decoration-4' >
             <div>Find your next favorite place </div>
 
           </div>
@@ -115,10 +115,10 @@ function App() {
           </div>
 
           <div className='container flex flex-col justify-center relative max-w-5xl'>
-              <img  className="z-20" src="./svg/DrawKit-cooking-kitchen-food-vector-illustrations-03.svg" alt="kitchen img"></img>
+            <img className="z-20" src="./svg/DrawKit-cooking-kitchen-food-vector-illustrations-03.svg" alt="kitchen img"></img>
             <div className='blob absolute bg-tangerine z-10  bottom-80 left-10  h-[15rem] w-[15rem]'></div>
             <div className='blob absolute bg-yellow-light z-10 
-            md:bottom-[36rem] md:left-[30rem] 
+            md:top-[20rem] md:left-[35rem] 
             sm:bottom-[5rem] sm:left-[5rem] 
             md:h-[20rem] md:w-[20rem]
             sm:h-0 sm:w-0
@@ -130,11 +130,15 @@ function App() {
       }
 
       {isLoading && <Loading></Loading>}
-
-      <div className='flex flex-col'>
-        <div className='text-black mx-8 pl-12 z-20'>
+      <div className='flex flex-col items-center'>
+      <div className='container flex flex-col justify-center relative max-w-4xl'>
+        <div className='absolute blob bg-tangerine z-10  top-40 left-10  h-[15rem] w-[15rem] m-0 p-0'></div>
+        <div className='absolute blob bg-yellow-light rotate-90 z-10  top-96 left-2/3  h-[20rem] w-[20rem] m-0 p-0'></div>
+        <div className=' text-black mx-8 pl-12 z-20'>
           {data.data.filter((val) => val.normalizedScore > 0.5).map((val) => (<RestaurantCard key={val.id} restaurantData={val} />))}
         </div>
+        
+      </div>
       </div>
       <footer className='font-clash-extralight font-bold text-center mb-6'>
         About us

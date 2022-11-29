@@ -97,7 +97,7 @@ async def main(request: Request):
                 "compound": compound_parameters}
         },
         {
-            "$limit": 10
+            "$limit": 15
         },
         {
             "$addFields": {
@@ -136,7 +136,13 @@ async def main(request: Request):
                 "Name": 1,
                 "Type": 1,
                 "Location": 1,
-                "Comments": 1,
+                "Comments": {
+                    "$replaceOne": {
+                        "input": "$Comments",
+                        "find": "More",
+                        "replacement": ""
+                    }
+                },
                 "Reviews": {
                     "$replaceOne": {
                         "input": "$Reviews",
