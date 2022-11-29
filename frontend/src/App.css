@@ -25,6 +25,7 @@ nav{
 .blob{
     border-radius: 25% 75% 22% 78% / 62% 50% 50% 38%;
     position: relative;
+    box-shadow: rgba(0,0,0,0.1) 12px 12px inset;
     
 
 }

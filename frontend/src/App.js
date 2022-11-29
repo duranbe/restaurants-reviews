@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import NavBar from './components/NavBar';
 import RestaurantCard from './components/RestaurantCard';
-
+import Loading from './components/Loading';
 
 function App() {
 
@@ -123,14 +123,8 @@ function App() {
 
       }
 
-      {isLoading &&
-        <div className='flex flex-col justify-center items-center'>
+      {isLoading && <Loading></Loading>}
 
-          <div className='animate-bounce-slow pt-32'>
-            <img className='max-w-5xl h-96' src="svg/DrawKit-cooking-kitchen-food-vector-illustrations-12.svg" alt="img animation"></img>
-          </div>
-        </div>
-      }
       <div className='flex flex-col'>
         <div className='text-black mx-8 pl-12'>
           {data.data.filter((val) => val.normalizedScore > 0.5).map((val) => (<RestaurantCard key={val.id} restaurantData={val} />))}
