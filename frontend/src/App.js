@@ -117,7 +117,13 @@ function App() {
           <div className='container flex flex-col justify-center relative max-w-5xl'>
               <img  className="z-20" src="./svg/DrawKit-cooking-kitchen-food-vector-illustrations-03.svg" alt="kitchen img"></img>
             <div className='blob absolute bg-tangerine z-10  bottom-80 left-10  h-[15rem] w-[15rem]'></div>
-            <div className='blob absolute bg-yellow-light z-10  bottom-[36rem] left-[40rem] md:h-[20rem] md:w-[20rem]  sm:h-[5rem] sm:w-[5rem] rotate-90'></div>
+            <div className='blob absolute bg-yellow-light z-10 
+            md:bottom-[36rem] md:left-[30rem] 
+            sm:bottom-[5rem] sm:left-[5rem] 
+            md:h-[20rem] md:w-[20rem]
+            sm:h-0 sm:w-0
+            
+           rotate-90'></div>
           </div>
         </div>
 
@@ -126,10 +132,9 @@ function App() {
       {isLoading && <Loading></Loading>}
 
       <div className='flex flex-col'>
-        <div className='text-black mx-8 pl-12'>
+        <div className='text-black mx-8 pl-12 z-20'>
           {data.data.filter((val) => val.normalizedScore > 0.5).map((val) => (<RestaurantCard key={val.id} restaurantData={val} />))}
         </div>
-
       </div>
       <footer className='font-clash-extralight font-bold text-center mb-6'>
         About us
