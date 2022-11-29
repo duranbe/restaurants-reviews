@@ -2,8 +2,8 @@ import './App.css';
 import axios from 'axios';
 import { useState } from 'react';
 import NavBar from './components/NavBar';
-import RestaurantCard from './components/RestaurantCard';
 import Loading from './components/Loading';
+import SearchResult from './components/SearchResult';
 
 function App() {
 
@@ -121,7 +121,7 @@ function App() {
             md:top-[20rem] md:left-[35rem] 
             sm:bottom-[5rem] sm:left-[5rem] 
             md:h-[20rem] md:w-[20rem]
-            sm:h-0 sm:w-0
+            sm:h-0 sm:w-0 
             
            rotate-90'></div>
           </div>
@@ -130,16 +130,8 @@ function App() {
       }
 
       {isLoading && <Loading></Loading>}
-      <div className='flex flex-col items-center'>
-      <div className='container flex flex-col justify-center relative max-w-4xl'>
-        <div className='absolute blob bg-tangerine z-10  top-40 left-10  h-[15rem] w-[15rem] m-0 p-0'></div>
-        <div className='absolute blob bg-yellow-light rotate-90 z-10  top-96 left-2/3  h-[20rem] w-[20rem] m-0 p-0'></div>
-        <div className=' text-black mx-8 pl-12 z-20'>
-          {data.data.filter((val) => val.normalizedScore > 0.5).map((val) => (<RestaurantCard key={val.id} restaurantData={val} />))}
-        </div>
-        
-      </div>
-      </div>
+
+      {!isLoading && !isLandingPage && <SearchResult data={data}></SearchResult>}
       <footer className='font-clash-extralight font-bold text-center mb-6'>
         About us
       </footer>
