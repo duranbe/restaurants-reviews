@@ -114,7 +114,7 @@ function App() {
             <div>Discover exquisites restaurants thanks to our reviews-powered search engine</div>
           </div>
 
-          <div className='container h-200 flex flex-col justify-center relative max-w-5xl h-auto '>
+          <div className='container flex flex-col justify-center relative max-w-5xl'>
               <img  className="z-20" src="./svg/DrawKit-cooking-kitchen-food-vector-illustrations-03.svg" alt="kitchen img"></img>
             <div className='blob absolute bg-tangerine z-10  bottom-80 left-10  h-[15rem] w-[15rem]'></div>
             <div className='blob absolute bg-yellow-light z-10  bottom-[36rem] left-[40rem] md:h-[20rem] md:w-[20rem]  sm:h-[5rem] sm:w-[5rem] rotate-90'></div>
