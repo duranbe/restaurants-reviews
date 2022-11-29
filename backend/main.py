@@ -97,7 +97,7 @@ async def main(request: Request):
                 "compound": compound_parameters}
         },
         {
-            "$limit": 15
+            "$limit": 10
         },
         {
             "$addFields": {
