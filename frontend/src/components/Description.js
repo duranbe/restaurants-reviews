@@ -17,7 +17,7 @@ export default function Description(){
 
     return(
 
-        <div className="text-slate-800 font-clash-medium text-left mx-2 my-2 text-xl">
+        <div className="text-slate-800 font-clash-medium text-center mx-2 my-2 text-xl">
           Because finding a good place to eat is like finding a needle in a haystack, CookReviews let you find hidden gems based on  <span className='text-tangerine font-clash-medium text-2xl'>{NbOfReviews}</span> customers reviews. </div>
     )
 }

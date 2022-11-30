@@ -95,38 +95,38 @@
         <g id="KITCHEN_STOVE" data-name="KITCHEN STOVE">
             <line id="FLOOR" class="cls-2" x1="1827.43" y1="1070.96" x2="1199.23" y2="1070.96" />
             <g id="TILE">
-                <polyline class="cls-2" points="1312.57 415.01 1312.57 489.13 1248.39 489.13" />
-                <polyline class="cls-2" points="1376.75 415.01 1376.75 489.13 1312.57 489.13 1312.57 415.01" />
-                <polyline class="cls-2" points="1248.39 563.25 1312.57 563.25 1312.57 489.13 1248.39 489.13" />
-                <rect class="cls-2" x="1312.57" y="489.13" width="64.18" height="74.12" />
-                <polyline class="cls-2" points="1440.93 415.01 1440.93 489.13 1376.75 489.13 1376.75 415.01" />
-                <polyline class="cls-2" points="1505.11 415.01 1505.11 489.13 1440.93 489.13 1440.93 415.01" />
-                <rect class="cls-2" x="1376.75" y="489.13" width="64.18" height="74.12" />
-                <rect class="cls-2" x="1440.93" y="489.13" width="64.18" height="74.12" />
-                <polyline class="cls-2" points="1248.39 563.25 1312.57 563.25 1312.57 637.37 1248.39 637.37" />
-                <rect class="cls-2" x="1312.57" y="563.25" width="64.18" height="74.12" />
-                <polyline class="cls-2" points="1248.39 637.37 1312.57 637.37 1312.57 711.49 1248.39 711.49" />
-                <rect class="cls-2" x="1312.57" y="637.37" width="64.18" height="74.12" />
-                <rect class="cls-2" x="1376.75" y="563.25" width="64.18" height="74.12" />
-                <rect class="cls-2" x="1440.93" y="563.25" width="64.18" height="74.12" />
-                <rect class="cls-2" x="1376.75" y="637.37" width="64.18" height="74.12" />
-                <rect class="cls-2" x="1440.93" y="637.37" width="64.18" height="74.12" />
-                <polyline class="cls-2" points="1569.29 415.01 1569.29 489.13 1505.11 489.13 1505.11 415.01" />
-                <polyline class="cls-2" points="1569.29 415.01 1569.29 489.13 1633.46 489.13 1633.46 415.01" />
-                <rect class="cls-2" x="1505.11" y="489.13" width="64.18" height="74.12" />
-                <rect class="cls-2" x="1569.28" y="489.13" width="64.18" height="74.12" />
-                <polyline class="cls-2" points="1697.64 415.01 1697.64 489.13 1633.46 489.13 1633.46 415.01" />
-                <polyline class="cls-2" points="1761.82 489.13 1697.64 489.13 1697.64 563.25 1761.82 563.25" />
-                <polyline class="cls-2" points="1761.82 489.13 1697.64 489.13 1697.64 415.01" />
-                <rect class="cls-2" x="1633.46" y="489.13" width="64.18" height="74.12" />
-                <rect class="cls-2" x="1505.11" y="563.25" width="64.18" height="74.12" />
-                <rect class="cls-2" x="1569.28" y="563.25" width="64.18" height="74.12" />
-                <rect class="cls-2" x="1505.11" y="637.37" width="64.18" height="74.12" />
-                <rect class="cls-2" x="1569.28" y="637.37" width="64.18" height="74.12" />
-                <rect class="cls-2" x="1633.46" y="563.25" width="64.18" height="74.12" />
-                <polyline class="cls-2" points="1761.82 637.37 1697.64 637.37 1697.64 711.49 1761.82 711.49" />
-                <polyline class="cls-2" points="1761.82 637.37 1697.64 637.37 1697.64 563.25 1761.82 563.25" />
-                <rect class="cls-2" x="1633.46" y="637.37" width="64.18" height="74.12" />
+                <polyline fill="none" points="1312.57 415.01 1312.57 489.13 1248.39 489.13" />
+                <polyline fill="none" points="1376.75 415.01 1376.75 489.13 1312.57 489.13 1312.57 415.01" />
+                <polyline fill="none" points="1248.39 563.25 1312.57 563.25 1312.57 489.13 1248.39 489.13" />
+                <rect fill="none" x="1312.57" y="489.13" width="64.18" height="74.12" />
+                <polyline fill="none" points="1440.93 415.01 1440.93 489.13 1376.75 489.13 1376.75 415.01" />
+                <polyline fill="none" points="1505.11 415.01 1505.11 489.13 1440.93 489.13 1440.93 415.01" />
+                <rect fill="none" x="1376.75" y="489.13" width="64.18" height="74.12" />
+                <rect fill="none" x="1440.93" y="489.13" width="64.18" height="74.12" />
+                <polyline fill="none" points="1248.39 563.25 1312.57 563.25 1312.57 637.37 1248.39 637.37" />
+                <rect fill="none" x="1312.57" y="563.25" width="64.18" height="74.12" />
+                <polyline fill="none" points="1248.39 637.37 1312.57 637.37 1312.57 711.49 1248.39 711.49" />
+                <rect fill="none" x="1312.57" y="637.37" width="64.18" height="74.12" />
+                <rect fill="none" x="1376.75" y="563.25" width="64.18" height="74.12" />
+                <rect fill="none" x="1440.93" y="563.25" width="64.18" height="74.12" />
+                <rect fill="none" x="1376.75" y="637.37" width="64.18" height="74.12" />
+                <rect fill="none" x="1440.93" y="637.37" width="64.18" height="74.12" />
+                <polyline fill="none" points="1569.29 415.01 1569.29 489.13 1505.11 489.13 1505.11 415.01" />
+                <polyline fill="none" points="1569.29 415.01 1569.29 489.13 1633.46 489.13 1633.46 415.01" />
+                <rect fill="none" x="1505.11" y="489.13" width="64.18" height="74.12" />
+                <rect fill="none" x="1569.28" y="489.13" width="64.18" height="74.12" />
+                <polyline fill="none" points="1697.64 415.01 1697.64 489.13 1633.46 489.13 1633.46 415.01" />
+                <polyline fill="none" points="1761.82 489.13 1697.64 489.13 1697.64 563.25 1761.82 563.25" />
+                <polyline fill="none" points="1761.82 489.13 1697.64 489.13 1697.64 415.01" />
+                <rect fill="none" x="1633.46" y="489.13" width="64.18" height="74.12" />
+                <rect fill="none" x="1505.11" y="563.25" width="64.18" height="74.12" />
+                <rect fill="none" x="1569.28" y="563.25" width="64.18" height="74.12" />
+                <rect fill="none" x="1505.11" y="637.37" width="64.18" height="74.12" />
+                <rect fill="none" x="1569.28" y="637.37" width="64.18" height="74.12" />
+                <rect fill="none" x="1633.46" y="563.25" width="64.18" height="74.12" />
+                <polyline fill="none" points="1761.82 637.37 1697.64 637.37 1697.64 711.49 1761.82 711.49" />
+                <polyline fill="none" points="1761.82 637.37 1697.64 637.37 1697.64 563.25 1761.82 563.25" />
+                <rect fill="none" x="1633.46" y="637.37" width="64.18" height="74.12" />
             </g>
             <g id="POT">
                 <path class="cls-2" d="M1432.81,594.95h119.45a0,0,0,0,1,0,0v88.32A16.73,16.73,0,0,1,1535.53,700h-86a16.73,16.73,0,0,1-16.73-16.73V594.95A0,0,0,0,1,1432.81,594.95Z" />
