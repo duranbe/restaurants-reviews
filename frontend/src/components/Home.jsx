@@ -47,18 +47,14 @@ export default function Home() {
                     vegan: isVegan,
                     nyc: isNewYork,
                 }
-            })
-                .then(function (response) {
+            }).then(function (response) {
+                setLoadingState(false)
+                setData({ data: response.data });
+                console.log(response.data)
 
-
-                    setLoadingState(false)
-                    setData({ data: response.data });
-                    console.log(response.data)
-
-                })
-                .catch(function (error) {
+            }).catch(function (error) {
                     console.log(error);
-                })
+            })
 
         }
 

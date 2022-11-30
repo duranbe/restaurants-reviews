@@ -1,6 +1,8 @@
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import motor.motor_asyncio
+from bson.objectid import ObjectId
+
 
 app = FastAPI()
 
@@ -129,9 +131,6 @@ async def main(request: Request):
         {
             "$project": {
 
-
-
-
                 "id": {'$toString': "$_id"},
                 "_id": 0,
                 "Name": 1,
@@ -166,3 +165,46 @@ async def get_number_of_documents(request: Request):
     number_of_documents = await db["restaurants-reviews"].estimated_document_count()
 
     return {"nbDocuments": number_of_documents}
+
+
+@app.get("/get_restaurant")
+async def get_restaurant(request: Request):
+
+    restaurant_id = request.query_params.get('restaurantId', None)
+
+
+    restaurant_data = await db["restaurants-reviews"].find_one({"_id": ObjectId(restaurant_id)},
+    {
+
+
+
+
+                "id": {'$toString': "$_id"},
+                "_id": 0,
+                "Name": 1,
+                "Type": 1,
+                "Location": 1,
+                "Comments": {
+                    "$replaceOne": {
+                        "input": "$Comments",
+                        "find": "More",
+                        "replacement": ""
+                    }
+                },
+                "Reviews": {
+                    "$replaceOne": {
+                        "input": "$Reviews",
+                        "find": " bubbles",
+                        "replacement": ""
+                    }
+                },
+                "Price_Range": 1,
+                "Street Address": 1,
+                "score": {"$meta": "searchScore"},
+                "normalizedScore": 1,
+                "Menu": 1,
+                "Trip_advisor Url": 1
+            })
+
+
+    return {"restaurantData": restaurant_data}

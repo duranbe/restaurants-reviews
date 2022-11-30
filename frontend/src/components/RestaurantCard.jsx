@@ -1,8 +1,19 @@
+import React from 'react';
+import { useNavigate } from "react-router-dom";
+
 
 export default function RestaurantCard({ restaurantData }) {
 
+
+  let navigate = useNavigate();
+  const routeChange = () => {
+    let path = `ri/${restaurantData.id}`
+    navigate(path);
+
+  }
+
   return (
-    <div className="my-3 p-5 hover:cursor-pointer font-clash-medium hover:border-l-black hover:border-l-2 flex flex-row">
+    <div className="my-3 p-5 hover:cursor-pointer font-clash-medium hover:border-l-black hover:border-l-2 flex flex-row" onClick={routeChange}>
       <div className="basis-1/2">
         <div className="underline underline-offset-[3px] text-xl cursor-pointer">
           {restaurantData.Name}
