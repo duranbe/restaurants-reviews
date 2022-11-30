@@ -89,6 +89,7 @@ async def main(request: Request):
                     }
             }
 
+  
 
     results = (await db["restaurants-reviews"].aggregate([
         {
@@ -158,3 +159,10 @@ async def main(request: Request):
         }]).to_list(length=None))
 
     return results
+
+
+@app.get("/nb_doc")
+async def get_number_of_documents(request: Request):
+    number_of_documents = await db["restaurants-reviews"].estimated_document_count()
+
+    return {"nbDocuments": number_of_documents}

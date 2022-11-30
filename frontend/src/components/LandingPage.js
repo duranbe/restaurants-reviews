@@ -1,3 +1,4 @@
+import Description from "./Description";
 
 
 
@@ -25,6 +26,10 @@ export default function LandingPage() {
           
          rotate-90'></div>
             </div>
+
+            <Description/>
+
+
         </div>
     )
 }
