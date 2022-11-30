@@ -31,13 +31,25 @@ nav{
 
 .animate-slow-translate{
   animation: slow-translate 2s infinite  alternate;
+  
+}
 
+.animate-slow-translate-rotate{
+  animation: slow-translate-rotate 2s infinite  alternate;
+  
 }
 
   
 @keyframes slow-translate {
+  
+  0% { transform: translateY(0) ; }
+  100% { transform: translateY(-20px);  }
 
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-20px); }
+}
+
+@keyframes slow-translate-rotate {
+  
+  0% { transform: translateY(0) ; rotate: 90deg;}
+  100% { transform: translateY(-20px); rotate: 90deg; }
 
 }
