@@ -16,8 +16,8 @@ export default function LandingPage() {
 
             <div className='container flex flex-col justify-center relative max-w-5xl'>
                 <img className="z-20" src="./svg/DrawKit-cooking-kitchen-food-vector-illustrations-03.svg" alt="kitchen img"></img>
-                <div className='blob absolute bg-tangerine z-10  bottom-80 left-10  h-[15rem] w-[15rem]'></div>
-                <div className='blob absolute bg-yellow-light z-10 
+                <div className='blob absolute animate-slow-translate bg-tangerine z-10  bottom-80 left-10  h-[15rem] w-[15rem]'></div>
+                <div className='blob absolute animate-slow-translate bg-yellow-light z-10 
                 md:top-[20rem] md:left-[35rem] 
                 sm:bottom-[5rem] sm:left-[5rem] 
                 md:h-[20rem] md:w-[20rem]

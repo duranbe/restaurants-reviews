@@ -28,4 +28,16 @@ nav{
     
 
 }
+
+.animate-slow-translate{
+  animation: slow-translate 2s infinite  alternate;
+
+}
+
   
+@keyframes slow-translate {
+
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-20px); }
+
+}
