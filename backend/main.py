@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import motor.motor_asyncio
 from bson.objectid import ObjectId
-
+import json
 
 app = FastAPI()
 
@@ -172,39 +172,11 @@ async def get_restaurant(request: Request):
 
     restaurant_id = request.query_params.get('restaurantId', None)
 
+    with open("query.json") as query:
 
-    restaurant_data = await db["restaurants-reviews"].find_one({"_id": ObjectId(restaurant_id)},
-    {
+        q = json.loads(query.read())
 
-
-
-
-                "id": {'$toString': "$_id"},
-                "_id": 0,
-                "Name": 1,
-                "Type": 1,
-                "Location": 1,
-                "Comments": {
-                    "$replaceOne": {
-                        "input": "$Comments",
-                        "find": "More",
-                        "replacement": ""
-                    }
-                },
-                "Reviews": {
-                    "$replaceOne": {
-                        "input": "$Reviews",
-                        "find": " bubbles",
-                        "replacement": ""
-                    }
-                },
-                "Price_Range": 1,
-                "Street Address": 1,
-                "score": {"$meta": "searchScore"},
-                "normalizedScore": 1,
-                "Menu": 1,
-                "Trip_advisor Url": 1
-            })
+    restaurant_data = await db["restaurants-reviews"].find_one({"_id": ObjectId(restaurant_id)},q)
 
 
     return {"restaurantData": restaurant_data}
