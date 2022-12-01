@@ -29,6 +29,11 @@ nav{
 
 }
 
+.img_bg{
+  box-shadow: rgba(0,0,0,0.1) 0.3rem 0.3rem inset;
+
+}
+
 .animate-slow-translate{
   animation: slow-translate 2s infinite  alternate;
   

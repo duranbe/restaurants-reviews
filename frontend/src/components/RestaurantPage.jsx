@@ -41,15 +41,20 @@ export default function RestaurantPage() {
                 <div className='flex flex-row space-x-10 pt-4 '>
 
                     <div className='basis-1/2'>
-                        <div className='font-clash-semibold  text-4xl'>
+                        <div className='font-clash-semibold  text-4xl underline underline-offset-4 decoration-tangerine decoration-4'>
                             {items.Name}
                         </div>
                         <div className='font-clash-medium pl-4 font-thin text-xl pt-4'>
                             <div className='py-1'>
                                 {items.Type}
                             </div>
-                            <div className='py-1'>
-                                {items["Street Address"] + " " + items.Location}
+                            <div className=''>
+                                {items["Street Address"]}
+
+                            </div>
+                            <div className=''>
+
+                                {items["Location"]}
                             </div>
                             <div className='py-1'>
                                 {"Reviews :" + items.Reviews}
@@ -60,9 +65,11 @@ export default function RestaurantPage() {
                         </div>
                     </div>
 
-                    <div className='basis-1/2 flex flex-row justify-center pr-8 pt-6 relative'>
+                    <div className='basis-1/2 flex flex-row justify-center pr-8 pt-6'>
+                        <div className='img_bg bg-tangerine-light rounded-full w-60 relative'>
+                            <img alt="icon" className="w-40 absolute top-0 left-0 right-0 bottom-0 m-auto p-1" src={`${svgPath}Ramen.svg`}></img>
+                        </div>
 
-                        <img alt="icon" className="w-40 z-20" src={`${svgPath}Ramen.svg`}></img>
 
 
                     </div>
@@ -70,18 +77,18 @@ export default function RestaurantPage() {
                 </div>
 
                 <div className='flex flex-col space-x-3 pt-4 pl-2'>
-                    <div className='text-xl font-clash-semibold text-slate-600 my-2 z-20'>Comments</div>
+                    <div className='text-2xl font-clash-semibold text-black my-2'>Comments</div>
                     <div className='text-lg font-clash-medium text-stone-700'>{items.Comments}</div>
                 </div>
 
-                <div className='flex flex-row space-x-3 pl-2'>
-                    <div className='bg-tangerine rounded-lg text-xl w-max px-4 mt-4 py-1 text-white'>
+                <div className='flex flex-row space-x-3 pl-2 font-clash-medium mt-8'>
+                    <div className='bg-tangerine rounded-lg text-lg w-max px-4 mt-4 py-1 text-white'>
                         Menu
                     </div>
-                    <div className='bg-tangerine rounded-lg text-xl w-max px-4 mt-4 py-1 text-white'>
+                    <div className='bg-tangerine rounded-lg text-lg w-max px-4 mt-4 py-1 text-white'>
                         TripAdvisor
                     </div>
-                    <div className='bg-tangerine rounded-lg text-xl w-max px-4 mt-4 py-1 text-white'>
+                    <div className='bg-tangerine rounded-lg text-lg w-max px-4 mt-4 py-1 text-white'>
                         Google Maps
                     </div>
                 </div>
