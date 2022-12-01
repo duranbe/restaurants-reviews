@@ -4,12 +4,13 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 
-const svgPath = process.env.PUBLIC_URL + '/svg/';
+const svgPath = process.env.PUBLIC_URL + '/svg/icons/';
 
 export default function RestaurantPage() {
     const { id } = useParams();
 
     const [isLoaded, setIsLoaded] = useState(false);
+    const [hasIcon, setIcon] = useState(false);
     const [items, setItems] = useState({});
 
     useEffect(() => {
@@ -22,13 +23,13 @@ export default function RestaurantPage() {
 
             console.log(response.data)
             setItems(response.data.restaurantData)
+            if(response.data.restaurantData.icon.length>0){
+                setIcon(true);
+            }
 
         }).catch(function (error) {
             console.log(error);
         })
-
-
-
 
 
     }, [id])
@@ -65,11 +66,11 @@ export default function RestaurantPage() {
                         </div>
                     </div>
 
-                    <div className='basis-1/2 flex flex-row justify-center pr-8 pt-6'>
-                        <div className='img_bg bg-tangerine-light rounded-full w-60 relative'>
-                            <img alt="icon" className="w-40 absolute top-0 left-0 right-0 bottom-0 m-auto p-1" src={`${svgPath}Ramen.svg`}></img>
-                        </div>
 
+
+                    <div className='basis-1/2 flex flex-row justify-center pr-8 pt-6'>
+
+                            { hasIcon &&  <Icon iconArray={items.icon}/>}
 
 
                     </div>
@@ -99,7 +100,17 @@ export default function RestaurantPage() {
         )
     }
 
+}
 
 
+function Icon({ iconArray }) {
 
+    const iconPath = iconArray[0].filename
+    return (
+
+        <div className='img_bg bg-tangerine-light rounded-full w-60 relative'>
+            <img alt="icon" className="w-40 absolute top-0 left-0 right-0 bottom-0 m-auto p-1" src={`${svgPath}${iconPath}`}></img>
+        </div>
+
+    )
 }

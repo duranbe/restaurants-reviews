@@ -12,7 +12,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET"],
     allow_headers=["*"],
 )
 
@@ -90,8 +90,6 @@ async def main(request: Request):
                         "path": "Location"
                     }
             }
-
-  
 
     results = (await db["restaurants-reviews"].aggregate([
         {
@@ -176,7 +174,43 @@ async def get_restaurant(request: Request):
 
         q = json.loads(query.read())
 
-    restaurant_data = await db["restaurants-reviews"].find_one({"_id": ObjectId(restaurant_id)},q)
-
-
+    restaurant_data = await db["restaurants-reviews"].find_one({"_id": ObjectId(restaurant_id)}, q)
+   
+    icon_filename = await get_image_based_on_words(restaurant_data['Type'] + " "+ restaurant_data['Name'])
+    
+    restaurant_data["icon"] = icon_filename
     return {"restaurantData": restaurant_data}
+
+
+async def get_image_based_on_words(words):
+
+    image = await db["svg_ressources"].aggregate([
+    {
+        '$search': {
+            'index': 'default', 
+            'text': {
+                'query': words, 
+                'path': {
+                    'wildcard': '*'
+                }
+            }
+        }
+    }, {
+        '$limit': 1
+    }, {
+        '$project': {
+            'id': {
+                '$toString': '$_id'
+            }, 
+            '_id': 0, 
+            'Name': 1, 
+            'filename': 1, 
+            'score': {
+                '$meta': 'searchScore'
+            }
+        }
+    }
+]).to_list(length=None)
+    print(words)
+    print(image)
+    return image 
