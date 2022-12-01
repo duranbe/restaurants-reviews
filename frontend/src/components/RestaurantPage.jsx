@@ -62,7 +62,7 @@ export default function RestaurantPage() {
 
                     <div className='basis-1/2 flex flex-row justify-center pr-8 pt-6 relative'>
 
-                        <img className="w-40 z-20" src={`${svgPath}Dimsum.svg`}></img>
+                        <img alt="icon" className="w-40 z-20" src={`${svgPath}Ramen.svg`}></img>
 
 
                     </div>
