@@ -52,11 +52,24 @@ export default function RestaurantPage() {
                     <div className='py-1'>
                         {"Price Range :  " + items.Price_Range}
                     </div>
-                    <div className='py-1'>
-                        {"Menu :" + items.Menu}
+
+
+                    <div className='flex flex-row space-x-3 pl-2'>
+                        <div className='bg-tangerine rounded-lg text-xl w-max px-4 mt-4 py-1 text-white'>
+                            Menu
+                        </div>
+                        <div className='bg-tangerine rounded-lg text-xl w-max px-4 mt-4 py-1 text-white'>
+                            TripAdvisor
+                        </div>
+                        <div className='bg-tangerine rounded-lg text-xl w-max px-4 mt-4 py-1 text-white'>
+                            Google Maps
+                        </div>
                     </div>
-                    <div className='py-1'>
-                        {"Reviews : " + items["Trip_advisor Url"]}
+
+                    <div className='flex flex-col space-x-3 pt-4 pl-2'>
+                        <div className='text-xl font-clash-semibold text-slate-600 my-2'>Comments</div>
+
+                        <div>{items.Comments}</div>
                     </div>
                 </div>
 
