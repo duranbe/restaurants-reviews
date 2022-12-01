@@ -23,7 +23,6 @@ client = motor.motor_asyncio.AsyncIOMotorClient(
 
 db = client["restaurants"]
 
-
 @app.get("/search")
 async def main(request: Request):
     kw = request.query_params.get('keyword', None)
@@ -175,9 +174,9 @@ async def get_restaurant(request: Request):
         q = json.loads(query.read())
 
     restaurant_data = await db["restaurants-reviews"].find_one({"_id": ObjectId(restaurant_id)}, q)
-   
-    icon_filename = await get_image_based_on_words(restaurant_data['Type'] + " "+ restaurant_data['Name'])
-    
+
+    icon_filename = await get_image_based_on_words(restaurant_data['Type'] + " " + restaurant_data['Name'])
+
     restaurant_data["icon"] = icon_filename
     return {"restaurantData": restaurant_data}
 
@@ -185,32 +184,34 @@ async def get_restaurant(request: Request):
 async def get_image_based_on_words(words):
 
     image = await db["svg_ressources"].aggregate([
-    {
-        '$search': {
-            'index': 'default', 
-            'text': {
-                'query': words, 
-                'path': {
-                    'wildcard': '*'
+        {
+            '$search': {
+                'index': 'default',
+                'text': {
+                    'query': words,
+                    'path': {
+                        'wildcard': '*'
+                    }
                 }
             }
-        }
-    }, {
-        '$limit': 1
-    }, {
-        '$project': {
-            'id': {
-                '$toString': '$_id'
-            }, 
-            '_id': 0, 
-            'Name': 1, 
-            'filename': 1, 
-            'score': {
-                '$meta': 'searchScore'
+        },
+        {
+            '$limit': 3
+        },
+        {
+            '$project': {
+                'id': {
+                    '$toString': '$_id'
+                },
+                '_id': 0,
+                'Name': 1,
+                'filename': 1,
+                'score': {
+                    '$meta': 'searchScore'
+                },
+
             }
         }
-    }
-]).to_list(length=None)
-    print(words)
-    print(image)
-    return image 
+    ]).to_list(length=None)
+
+    return image
