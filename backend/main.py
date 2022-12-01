@@ -169,7 +169,7 @@ async def get_restaurant(request: Request):
 
     restaurant_id = request.query_params.get('restaurantId', None)
 
-    with open("query.json") as query:
+    with open("./queries/query.json") as query:
 
         q = json.loads(query.read())
 
