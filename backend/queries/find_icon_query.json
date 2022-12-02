@@ -1,0 +1,30 @@
+[
+    {
+        "$search": {
+            "index": "default",
+            "text": {
+                "query": "",
+                "path": {
+                    "wildcard": "*"
+                }
+            }
+        }
+    },
+    {
+        "$limit": 3
+    },
+    {
+        "$project": {
+            "id": {
+                "$toString": "$_id"
+            },
+            "_id": 0,
+            "Name": 1,
+            "filename": 1,
+            "score": {
+                "$meta": "searchScore"
+            }
+
+        }
+    }
+]

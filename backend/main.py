@@ -183,35 +183,12 @@ async def get_restaurant(request: Request):
 
 async def get_image_based_on_words(words):
 
-    image = await db["svg_ressources"].aggregate([
-        {
-            '$search': {
-                'index': 'default',
-                'text': {
-                    'query': words,
-                    'path': {
-                        'wildcard': '*'
-                    }
-                }
-            }
-        },
-        {
-            '$limit': 3
-        },
-        {
-            '$project': {
-                'id': {
-                    '$toString': '$_id'
-                },
-                '_id': 0,
-                'Name': 1,
-                'filename': 1,
-                'score': {
-                    '$meta': 'searchScore'
-                },
+    with open("./queries/find_icon_query.json") as query:
 
-            }
-        }
-    ]).to_list(length=None)
+        q = json.loads(query.read())
+
+    q[0]["$search"]["text"]["query"] = words
+
+    image = await db["svg_ressources"].aggregate(q).to_list(length=None)
 
     return image
