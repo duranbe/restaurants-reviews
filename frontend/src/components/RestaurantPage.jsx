@@ -25,18 +25,18 @@ function StarIcon({id}) {
             }
         
         }
-        console.log(favs)
+       
         localStorage.setItem("favorites",JSON.stringify(favs))
         }else{
     
-        console.log("Adding to favoerites")
+  
         var favorites = JSON.parse(localStorage.getItem("favorites"));
         if(favorites){
             favorites.push(id)
         }else{
             favorites = [id]
         }
-        console.log(favorites)
+
         localStorage.setItem("favorites",JSON.stringify(favorites))
        }
 
@@ -106,7 +106,7 @@ export default function RestaurantPage() {
         return (<div>Loading...</div>)
     } else {
         return (
-            <div className='container my-8 mx-auto bg-orange-50 rounded-md px-8 py-4'>
+            <div className='container my-8 mx-auto px-8 py-4'>
                 <div className='flex flex-row space-x-10 pt-4 '>
 
                     <div className='basis-1/2'>
