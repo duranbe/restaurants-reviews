@@ -81,16 +81,16 @@ export default function Home() {
             <div className="flex items-center mt-2 ml-3">
                 <div className="flex mx-1 ">
                     <input type="checkbox" id="choose-me" className="peer hidden" onChange={toggleVegan} />
-                    <label htmlFor="choose-me" className="select-none cursor-pointer rounded-lg border-1
-            py-1 px-2 font-clash-medium transition-colors duration-100 ease-in-out
-            bg-tangerine text-gray-50 text-m border-2 
+                    <label htmlFor="choose-me" className="select-none cursor-pointer rounded-xl 
+             px-3 font-clash-semibold transition-colors duration-100 ease-in-out
+            bg-tangerine-light text-slate-900 text-md 
           peer-checked:bg-gray-200 peer-checked:text-gray-900 peer-checked:border-slate-400">Vegan</label>
                 </div>
                 <div className="flex mx-1">
                     <input type="checkbox" id="choose-nyc" className="peer hidden" onChange={toggleNewYork} />
-                    <label htmlFor="choose-nyc" className="select-none cursor-pointer rounded-lg border-1
-            py-1 px-2 font-clash-medium transition-colors duration-100 ease-in-out
-            bg-tangerine text-gray-50 text-m border-2 
+                    <label htmlFor="choose-nyc" className="select-none cursor-pointer rounded-xl
+            px-3 font-clash-semibold transition-colors duration-100 ease-in-out
+            bg-tangerine-light text-slate-900 text-m 
           peer-checked:bg-gray-200 peer-checked:text-gray-900 peer-checked:border-slate-400">New York City</label>
                 </div>
             </div>

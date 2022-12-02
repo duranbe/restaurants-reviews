@@ -8,6 +8,9 @@ export default function NavBar() {
           <a className="flex items-center text-2xl" href="/">
             CookReview
           </a>
+          <a className="font-serif text-md bg-tangerine-light px-3 rounded-xl text-slate-800" href="/favorites">
+          ★ Favorites
+          </a>
         </div>
       </nav>
     )
