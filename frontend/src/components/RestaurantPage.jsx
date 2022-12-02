@@ -9,7 +9,16 @@ const svgPath = process.env.PUBLIC_URL + '/svg/icons/';
 
 function StarIcon({id}) {
 
-    const [isFavorite,setFavorite] = useState(false)
+    var favs = JSON.parse(localStorage.getItem("favorites"));
+    var isAlreadyFavorite = false
+    for( var i = 0; i < favs.length; i++){ 
+    
+            if ( favs[i] === id){ 
+                isAlreadyFavorite=true
+            }
+        
+        } 
+    const [isFavorite,setFavorite] = useState(isAlreadyFavorite)
 
 
     function handleOnClick() {
