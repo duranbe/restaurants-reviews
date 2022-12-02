@@ -114,9 +114,11 @@ export default function RestaurantPage() {
     if (!isLoaded) {
         return (<div>Loading...</div>)
     } else {
+
+        const Review =  "Reviews : " + items.Reviews;
         return (
             <div className='container my-8 mx-auto px-8 py-4'>
-                <div className='flex flex-row space-x-10 pt-4 '>
+                <div className='flex flex-row space-x-10 pt-4 whitespace-pre'>
 
                     <div className='basis-1/2'>
                         <div className='font-clash-semibold  text-4xl underline underline-offset-4 items-stretch decoration-tangerine decoration-4 flex flex-row'>
@@ -132,15 +134,15 @@ export default function RestaurantPage() {
                                 {items["Street Address"]}
 
                             </div>
-                            <div className=''>
+                            <div className='py-1'>
 
                                 {items["Location"]}
                             </div>
-                            <div className='py-1'>
-                                {"Reviews :" + items.Reviews}
+                            <div className='py-1 whitespace-pre'>
+                               {Review}
                             </div>
                             <div className='py-1'>
-                                {"Price Range :  " + items.Price_Range}
+                                {"Price Range : " + items.Price_Range}
                             </div>
                         </div>
                     </div>
@@ -157,7 +159,7 @@ export default function RestaurantPage() {
                 </div>
 
                 <div className='flex flex-col space-x-3 pt-4 pl-2'>
-                    <div className='text-2xl font-clash-semibold text-black my-2'>Comments</div>
+                    <div className='text-2xl font-clash-semibold text-black my-2 whitespace-normal'>Comments</div>
                     <div className='text-lg font-clash-medium text-stone-700'>{items.Comments}</div>
                 </div>
 
