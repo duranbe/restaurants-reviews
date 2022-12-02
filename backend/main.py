@@ -159,6 +159,7 @@ async def main(request: Request):
 
 @app.get("/nb_doc")
 async def get_number_of_documents(request: Request):
+    
     number_of_documents = await db["restaurants-reviews"].estimated_document_count()
 
     return {"nbDocuments": number_of_documents}
@@ -169,13 +170,11 @@ async def get_restaurant(request: Request):
 
     restaurant_id = request.query_params.get('restaurantId', None)
 
-    with open("./queries/query.json") as query:
-
-        q = json.loads(query.read())
+    q = load_json("./queries/query.json")
 
     restaurant_data = await db["restaurants-reviews"].find_one({"_id": ObjectId(restaurant_id)}, q)
 
-    icon_filename = await get_image_based_on_words(restaurant_data['Type'] + " " + restaurant_data['Name'])
+    icon_filename = await get_image_based_on_words(f"{restaurant_data['Type']}  {restaurant_data['Name']}")
 
     restaurant_data["icon"] = icon_filename
     return {"restaurantData": restaurant_data}
@@ -183,12 +182,18 @@ async def get_restaurant(request: Request):
 
 async def get_image_based_on_words(words):
 
-    with open("./queries/find_icon_query.json") as query:
-
-        q = json.loads(query.read())
+    q = load_json("./queries/find_icon_query.json")
 
     q[0]["$search"]["text"]["query"] = words
 
     image = await db["svg_ressources"].aggregate(q).to_list(length=None)
 
     return image
+
+
+def load_json(path):
+
+    with open(path) as query:
+        q = json.loads(query.read())
+
+    return q
