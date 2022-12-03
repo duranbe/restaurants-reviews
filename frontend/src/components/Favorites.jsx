@@ -33,10 +33,9 @@ function FavRestaurantCard({propsId}) {
             }).then(function (response) {
 
                 setData(response.data.restaurantData)
-                console.log(response.data.restaurantData)
-
+                
             }).catch(function (error) {
-                console.log(error);
+                
             })
       };
   
@@ -44,7 +43,14 @@ function FavRestaurantCard({propsId}) {
     }, [propsId]);
   
     if (data) {
-      return (<div>{data.Name}</div>);
+      return (
+        <div>
+             <div className='font-clash-semibold text-3xl py-2'>
+                <a href={`http://localhost:3000/ri/${propsId}`}>{data.Name}</a>
+            </div>
+        </div>
+     
+      );
     } else {
       return (<div>Loading </div>);
     }
