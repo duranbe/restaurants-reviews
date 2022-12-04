@@ -115,6 +115,7 @@ export default function RestaurantPage() {
         return (<div>Loading...</div>)
     } else {
 
+        const googleMapLink = "https://www.google.com/maps/search/"+ items.Name+" "+items["Street Address"]+" "+items["Location"]
         const Review =  "Reviews : " + items.Reviews;
         return (
             <div className='container my-8 mx-auto px-8 py-4'>
@@ -164,14 +165,12 @@ export default function RestaurantPage() {
                 </div>
 
                 <div className='flex flex-row space-x-3 pl-2 font-clash-medium mt-8'>
+                    
                     <div className='bg-tangerine rounded-lg text-lg w-max px-4 mt-4 py-1 text-white'>
-                        Menu
+                        <a href={items["Trip_advisor Url"]}>Tripadvisor</a>
                     </div>
                     <div className='bg-tangerine rounded-lg text-lg w-max px-4 mt-4 py-1 text-white'>
-                        TripAdvisor
-                    </div>
-                    <div className='bg-tangerine rounded-lg text-lg w-max px-4 mt-4 py-1 text-white'>
-                        Google Maps
+                        <a href={googleMapLink}>Google Maps</a>
                     </div>
                 </div>
 
