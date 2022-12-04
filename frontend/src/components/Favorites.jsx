@@ -10,7 +10,6 @@ export default function Favorites() {
   return (
     <div className='flex flex-row'>
 
-
       <div className='my-8 px-8 py-4 basis-1/2'>
         {favoritesRestaurant.map(item => <FavRestaurantCard key={item} propsId={item} />)}
       </div>

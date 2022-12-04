@@ -11,7 +11,7 @@ export default function LandingPage() {
                 <div>Find your next favorite place </div>
 
             </div>
-            <div className='text-black font-clash-medium text-2xl mx-8 z-20' >
+            <div className='text-black font-clash-medium text-xl mx-8 z-20' >
                 <div>Discover exquisites restaurants thanks to our reviews-powered search engine</div>
             </div>
 
