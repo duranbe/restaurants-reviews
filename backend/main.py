@@ -17,11 +17,18 @@ app.add_middleware(
 )
 
 
-client = motor.motor_asyncio.AsyncIOMotorClient(
-    "mongodb+srv://mongodb:U0YOA6XeQwL1gz0r@cluster0.njgbymn.mongodb.net/?retryWrites=true&w=majority"
-)
 
-db = client["restaurants"]
+@app.on_event("startup")
+async def startup_db_client():
+    app.mongodb_client = motor.motor_asyncio.AsyncIOMotorClient(
+    "mongodb+srv://mongodb:U0YOA6XeQwL1gz0r@cluster0.njgbymn.mongodb.net/?retryWrites=true&w=majority"
+    )
+    app.mongodb = app.mongodb_client["restaurants"]
+
+
+@app.on_event("shutdown")
+async def shutdown_db_client():
+    app.mongodb_client.close()
 
 @app.get("/search")
 async def main(request: Request):
@@ -90,7 +97,7 @@ async def main(request: Request):
                     }
             }
 
-    results = (await db["restaurants-reviews"].aggregate([
+    results = (await  request.app.mongodb["restaurants-reviews"].aggregate([
         {
             "$search": {
                 'index': 'reviews',
@@ -160,7 +167,7 @@ async def main(request: Request):
 @app.get("/nb_doc")
 async def get_number_of_documents(request: Request):
     
-    number_of_documents = await db["restaurants-reviews"].estimated_document_count()
+    number_of_documents = await  request.app.mongodb["restaurants-reviews"].estimated_document_count()
 
     return {"nbDocuments": number_of_documents}
 
@@ -172,7 +179,7 @@ async def get_restaurant(request: Request):
 
     q = load_json("./queries/query.json")
 
-    restaurant_data = await db["restaurants-reviews"].find_one({"_id": ObjectId(restaurant_id)}, q)
+    restaurant_data = await  request.app.mongodb["restaurants-reviews"].find_one({"_id": ObjectId(restaurant_id)}, q)
 
     icon_filename = await get_image_based_on_words(f"{restaurant_data['Type']}  {restaurant_data['Name']}")
 
@@ -186,7 +193,7 @@ async def get_image_based_on_words(words):
 
     q[0]["$search"]["text"]["query"] = words
 
-    image = await db["svg_ressources"].aggregate(q).to_list(length=None)
+    image = await  request.app.mongodb["svg_ressources"].aggregate(q).to_list(length=None)
 
     return image
 
