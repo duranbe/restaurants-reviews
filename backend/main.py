@@ -1,12 +1,14 @@
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-import motor.motor_asyncio
 from bson.objectid import ObjectId
+from settings import CONNECTION_STRING,HOST
 import json
+import motor.motor_asyncio
 
 app = FastAPI()
 
 origins = ["http://localhost:3000"]
+origins += HOST
 
 app.add_middleware(
     CORSMiddleware,
@@ -19,9 +21,7 @@ app.add_middleware(
 
 @app.on_event("startup")
 async def startup_db_client():
-    app.mongodb_client = motor.motor_asyncio.AsyncIOMotorClient(
-        "mongodb+srv://mongodb:U0YOA6XeQwL1gz0r@cluster0.njgbymn.mongodb.net/?retryWrites=true&w=majority"
-    )
+    app.mongodb_client = motor.motor_asyncio.AsyncIOMotorClient(CONNECTION_STRING)
     app.mongodb = app.mongodb_client["restaurants"]
 
 
