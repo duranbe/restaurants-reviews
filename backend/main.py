@@ -193,7 +193,7 @@ async def get_image_based_on_words(words):
 
     q[0]["$search"]["text"]["query"] = words
 
-    image = await  request.app.mongodb["svg_ressources"].aggregate(q).to_list(length=None)
+    image = await request.app.mongodb["svg_ressources"].aggregate(q).to_list(length=None)
 
     return image
 
@@ -204,3 +204,16 @@ def load_json(path):
         q = json.loads(query.read())
 
     return q
+
+@app.get("/autocomplete")
+async def autocomplete(request: Request):
+    word = request.query_params.get('word', None)
+    print(word)
+    q = load_json("./queries/autocomplete_query.json")
+
+    q[0]["$search"]["autocomplete"]["query"] = word
+
+   
+    result = await request.app.mongodb["restaurants-reviews"].aggregate(q).to_list(length=None)
+
+    return result

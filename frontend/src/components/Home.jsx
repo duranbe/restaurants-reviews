@@ -24,12 +24,18 @@ export default function Home() {
         setNewYork(element.target.checked);
     }
 
+    function handleKeyUp(event){
+        console.log(event)
+        console.log(document.getElementById("search-bar").value)
+    }
+
     function handleKeyPress(e) {
 
         setData({ data: [] })
-
-
+        
         if (e.key === "Enter" || e.type === "click") {
+
+           
 
             setLoadingState(true);
             setLandingPage(false);
@@ -40,7 +46,7 @@ export default function Home() {
             } else {
                 searchValue = e.target.value;
             }
-
+            console.log(searchValue)
             axios.get('http://localhost:8000/search', {
                 params: {
                     keyword: searchValue,
@@ -65,7 +71,7 @@ export default function Home() {
         <div className="mt-4 mb-2 mx-10">
             <label className="relative block font-light text-xl5">
 
-                <input autoComplete="off" id="search-bar" onKeyPress={handleKeyPress} className="h-12 font-clash-regular 
+                <input autoComplete="off" id="search-bar" onKeyPress={handleKeyPress} onKeyUp={handleKeyUp} className="h-12 font-clash-regular 
           placeholder:italic
           
           placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md

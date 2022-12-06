@@ -1,0 +1,23 @@
+[
+    {
+        "$search": {
+            "index": "reviews",
+            "autocomplete": {
+                "query": "ramen",
+                "path": "Name"
+            }
+        }
+    },
+    {
+        "$limit": 3
+    },
+    {
+        "$project": {
+            "id": {
+                "$toString": "$_id"
+            },
+            "_id": 0,
+            "Name": 1
+        }
+    }
+]
