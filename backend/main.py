@@ -177,9 +177,9 @@ async def get_restaurant(request: Request):
 
     restaurant_id = request.query_params.get('restaurantId', None)
 
-    q = load_json("./queries/query.json")
+    query = load_json("./queries/query.json")
 
-    restaurant_data = await  request.app.mongodb["restaurants-reviews"].find_one({"_id": ObjectId(restaurant_id)}, q)
+    restaurant_data = await  request.app.mongodb["restaurants-reviews"].find_one({"_id": ObjectId(restaurant_id)}, query)
 
     icon_filename = await get_image_based_on_words(f"{restaurant_data['Type']}  {restaurant_data['Name']}")
 
@@ -189,11 +189,11 @@ async def get_restaurant(request: Request):
 
 async def get_image_based_on_words(words):
 
-    q = load_json("./queries/find_icon_query.json")
+    query = load_json("./queries/find_icon_query.json")
 
-    q[0]["$search"]["text"]["query"] = words
+    query[0]["$search"]["text"]["query"] = words
 
-    image = await request.app.mongodb["svg_ressources"].aggregate(q).to_list(length=None)
+    image = await request.app.mongodb["svg_ressources"].aggregate(query).to_list(length=None)
 
     return image
 
@@ -201,19 +201,18 @@ async def get_image_based_on_words(words):
 def load_json(path):
 
     with open(path) as query:
-        q = json.loads(query.read())
+        query = json.loads(query.read())
 
-    return q
+    return query
 
 @app.get("/autocomplete")
 async def autocomplete(request: Request):
     word = request.query_params.get('word', None)
-    print(word)
-    q = load_json("./queries/autocomplete_query.json")
 
-    q[0]["$search"]["autocomplete"]["query"] = word
+    query = load_json("./queries/autocomplete_query.json")
 
+    query[0]["$search"]["autocomplete"]["query"] = word
    
-    result = await request.app.mongodb["restaurants-reviews"].aggregate(q).to_list(length=None)
+    result = await request.app.mongodb["restaurants-reviews"].aggregate(query).to_list(length=None)
 
     return result
