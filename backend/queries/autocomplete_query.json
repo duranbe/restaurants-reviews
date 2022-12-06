@@ -3,7 +3,7 @@
         "$search": {
             "index": "reviews",
             "autocomplete": {
-                "query": "ramen",
+                "query": "",
                 "path": "Name"
             }
         }

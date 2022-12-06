@@ -7,7 +7,7 @@ export default function LandingPage() {
     return (
         <div className='flex flex-col items-center'>
 
-            <div className='text-black font-clash-semibold text-5xl mx-8 mt-4 z-20 underline underline-offset-4 decoration-tangerine decoration-4' >
+            <div className='text-black font-clash-semibold text-5xl mx-8 mt-2 z-0 underline underline-offset-4 decoration-tangerine decoration-4' >
                 <div>Find your next favorite place </div>
 
             </div>

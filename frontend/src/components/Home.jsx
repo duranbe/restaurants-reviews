@@ -12,6 +12,8 @@ export default function Home() {
     const [isVegan, setVegan] = useState(false);
     const [isNewYork, setNewYork] = useState(false);
 
+    const [autoCompleteData,setAutoCompleteData] = useState({ data: []})
+
     const [isLoading, setLoadingState] = useState(false);
     const [isLandingPage, setLandingPage] = useState(true);
 
@@ -25,8 +27,26 @@ export default function Home() {
     }
 
     function handleKeyUp(event){
-        console.log(event)
-        console.log(document.getElementById("search-bar").value)
+
+        if(event.key === "Enter" || event.type === "click"){
+            setAutoCompleteData({ data: []})
+            return
+        }
+        
+        let inputValue = document.getElementById("search-bar").value;
+
+        axios.get('http://localhost:8000/autocomplete', {
+                params: {
+                    word: inputValue
+                }
+            }).then(function (response) {
+               
+                setAutoCompleteData({ data: response.data });
+                console.log(response.data)
+
+            }).catch(function (error) {
+                    console.log(error);
+            })
     }
 
     function handleKeyPress(e) {
@@ -39,6 +59,7 @@ export default function Home() {
 
             setLoadingState(true);
             setLandingPage(false);
+            setAutoCompleteData({ data: []})
 
             let searchValue;
             if (e.type === "click") {
@@ -68,7 +89,7 @@ export default function Home() {
 
     return (
 <div>
-        <div className="mt-4 mb-2 mx-10">
+        <div className="mt-4 mb-2 mx-10 relative">
             <label className="relative block font-light text-xl5">
 
                 <input autoComplete="off" id="search-bar" onKeyPress={handleKeyPress} onKeyUp={handleKeyUp} className="h-12 font-clash-regular 
@@ -84,7 +105,16 @@ export default function Home() {
 
                 </span>
             </label>
-            <div className="flex items-center mt-2 ml-3">
+            
+            <div className='absolute z-10  w-full bg-white  border-slate-200 rounded-md border-r-2 border-b-2 border-l-2'>
+                {autoCompleteData.data.map((item) =>  (<AutoCompleteItem key={item.id} data={item}/>))}
+                
+            
+            </div>
+           
+
+
+            <div className="flex items-center mt-2 ml-3 z-10">
                 <div className="flex mx-1 ">
                     <input type="checkbox" id="choose-me" className="peer hidden" onChange={toggleVegan} />
                     <label htmlFor="choose-me" className="select-none cursor-pointer rounded-xl 
@@ -111,4 +141,14 @@ export default function Home() {
       
     </div>
     )
+}
+
+
+function AutoCompleteItem(data){
+
+    const url = `/ri/${data.data.id}`
+
+    return(<div className='bg-white p-2 w-full font-clash-light font-bold hover:bg-slate-50'>
+        <a href={url}>{data.data.Name} </a>
+        </div>)
 }

@@ -181,13 +181,13 @@ async def get_restaurant(request: Request):
 
     restaurant_data = await  request.app.mongodb["restaurants-reviews"].find_one({"_id": ObjectId(restaurant_id)}, query)
 
-    icon_filename = await get_image_based_on_words(f"{restaurant_data['Type']}  {restaurant_data['Name']}")
+    icon_filename = await get_image_based_on_words(f"{restaurant_data['Type']}  {restaurant_data['Name']}",request)
 
     restaurant_data["icon"] = icon_filename
     return {"restaurantData": restaurant_data}
 
 
-async def get_image_based_on_words(words):
+async def get_image_based_on_words(words,request):
 
     query = load_json("./queries/find_icon_query.json")
 
@@ -208,6 +208,9 @@ def load_json(path):
 @app.get("/autocomplete")
 async def autocomplete(request: Request):
     word = request.query_params.get('word', None)
+
+    if not word or len(word)<1:
+        return []
 
     query = load_json("./queries/autocomplete_query.json")
 
