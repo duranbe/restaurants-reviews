@@ -6,8 +6,8 @@ import { useEffect } from 'react';
 export default function Favorites() {
 
   var favoritesRestaurant = JSON.parse(localStorage.getItem("favorites"));
-
-  return (
+  if(favoritesRestaurant)
+  {return (
     <div className='flex flex-row'>
 
       <div className='my-8 px-8 py-4 basis-1/2'>
@@ -19,7 +19,9 @@ export default function Favorites() {
 
     </div>
 
-  )
+  )}else{
+    return (<div></div>)
+  }
 
 
 }

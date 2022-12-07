@@ -11,13 +11,17 @@ function StarIcon({ id }) {
 
     var favs = JSON.parse(localStorage.getItem("favorites"));
     var isAlreadyFavorite = false
-    for (var i = 0; i < favs.length; i++) {
 
-        if (favs[i] === id) {
-            isAlreadyFavorite = true
+    if(favs){
+        for (var i = 0; i < favs.length; i++) {
+
+            if (favs[i] === id) {
+                isAlreadyFavorite = true
+            }
+    
         }
-
     }
+    
     const [isFavorite, setFavorite] = useState(isAlreadyFavorite)
 
 
