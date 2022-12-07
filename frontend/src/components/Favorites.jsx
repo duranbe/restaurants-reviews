@@ -54,7 +54,7 @@ function FavRestaurantCard({ propsId }) {
 
   if (data) {
 
-    const restaurantUrl = "http://" + process.env.REACT_APP_DOMAIN_NAME + "/ri/" + propsId
+    const restaurantUrl = "/ri/" + propsId
 
     return (
       <div>
