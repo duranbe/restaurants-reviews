@@ -14,7 +14,7 @@ export default function Favorites() {
         {favoritesRestaurant.map(item => <FavRestaurantCard key={item} propsId={item} />)}
       </div>
       <div className='px-8 basis-1/3' >
-         <img classname="" src="./svg/DrawKit-cooking-kitchen-food-vector-illustrations-15.svg" alt="cooking kitchen shelf"></img>
+        <img className="" src="./svg/DrawKit-cooking-kitchen-food-vector-illustrations-15.svg" alt="cooking kitchen shelf"></img>
       </div>
 
     </div>
@@ -28,10 +28,13 @@ export default function Favorites() {
 function FavRestaurantCard({ propsId }) {
   const [data, setData] = useState(null);
 
+
+
   useEffect(() => {
+    const apiURL = "http://" + process.env.REACT_APP_API + "/get_restaurant"
     const fetchData = async () => {
-      console.log(propsId)
-      axios.get('http://localhost:8000/get_restaurant', {
+
+      axios.get(apiURL, {
         params: {
           restaurantId: propsId
         }
@@ -40,7 +43,7 @@ function FavRestaurantCard({ propsId }) {
         setData(response.data.restaurantData)
 
       }).catch(function (error) {
-
+        console.log(error)
       })
     };
 
@@ -48,15 +51,18 @@ function FavRestaurantCard({ propsId }) {
   }, [propsId]);
 
   if (data) {
+
+    const restaurantUrl = "http://" + process.env.REACT_APP_DOMAIN_NAME + "/ri/" + propsId
+
     return (
       <div>
         <div className='font-clash-semibold text-3xl py-2 hover:underline underline-offset-2'>
-          <a href={`http://localhost:3000/ri/${propsId}`}>{data.Name}</a>
+          <a href={restaurantUrl}>{data.Name}</a>
         </div>
       </div>
 
     );
   } else {
-    return (<div>Loading </div>);
+    return (<div className='font-clash-regular'>Loading</div>);
   }
 }

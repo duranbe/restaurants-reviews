@@ -38,8 +38,8 @@ export default function RestaurantCard({ restaurantData }) {
       <div className="basis-2/3 pt-3">
         <div className="text-tangerine text-xl font-clash-bold">Comment</div>
         <div className="font-clash-ligth indent-6 whitespace-normal">{restaurantData["Comments"]}</div>
-       
-       
+
+
       </div>
     </div>
   )

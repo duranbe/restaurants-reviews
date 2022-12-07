@@ -1,7 +1,5 @@
 import Description from "./Description";
 
-
-
 export default function LandingPage() {
 
     return (
@@ -16,7 +14,7 @@ export default function LandingPage() {
             </div>
 
             <div className='container flex flex-col justify-center relative max-w-5xl'>
-                <img className="z-20" src="./svg/DrawKit-cooking-kitchen-food-vector-illustrations-03.svg" alt="kitchen img"></img>
+                <img className="z-20" src="/svg/DrawKit-cooking-kitchen-food-vector-illustrations-03.svg" alt="kitchen img"></img>
                 <div className='blob absolute sm:h-16 sm:w-26 animate-slow-translate bg-tangerine z-10  bottom-80 left-10  md:h-[15rem] md:w-[15rem]'></div>
                 <div className='blob absolute  bg-yellow-light z-10 
                 md:top-[20rem] md:left-[40rem] 
@@ -26,7 +24,7 @@ export default function LandingPage() {
                 sm:h-0 sm:w-0 animate-slow-translate-rotate '></div>
             </div>
 
-            <Description/>
+            <Description />
 
 
         </div>
