@@ -13,7 +13,7 @@ export default function Favorites() {
       <div className='my-8 px-8 py-4 basis-1/2'>
         {favoritesRestaurant.map(item => <FavRestaurantCard key={item} propsId={item} />)}
       </div>
-      <div className='px-8 basis-1/3' >
+      <div className='px-8 md:basis-1/3 xs:basis-0' >
         <img className="" src="./svg/DrawKit-cooking-kitchen-food-vector-illustrations-15.svg" alt="cooking kitchen shelf"></img>
       </div>
 

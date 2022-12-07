@@ -13,7 +13,7 @@ export default function RestaurantCard({ restaurantData }) {
   }
 
   return (
-    <div className="my-3 p-5 hover:cursor-pointer font-clash-medium hover:border-l-black hover:border-l-2 flex flex-row" onClick={routeChange}>
+    <div className="my-3 p-5 hover:cursor-pointer font-clash-medium hover:border-l-black hover:border-l-2 flex flex-col md:flex-row" onClick={routeChange}>
       <div className="basis-1/2">
         <div className="underline underline-offset-[3px] text-xl cursor-pointer">
           {restaurantData.Name}
@@ -35,7 +35,7 @@ export default function RestaurantCard({ restaurantData }) {
         </div>
       </div>
 
-      <div className="basis-2/3 pt-3">
+      <div className="basis-2/3 pt-3 mx-4">
         <div className="text-tangerine text-xl font-clash-bold">Comment</div>
         <div className="font-clash-ligth indent-6 whitespace-normal">{restaurantData["Comments"]}</div>
 

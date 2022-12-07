@@ -1,10 +1,17 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   mode: "jit",
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
+    screens: {
+      'xs': '475px',
+      ...defaultTheme.screens,
+    },
+
     fontFamily: {
       'clash-variable': 'ClashDisplay-Variable',
       'clash-extralight': 'ClashDisplay-Extralight',
@@ -23,6 +30,8 @@ module.exports = {
       "3xl": '1.953rem',
       "4xl": '2.441rem',
       "5xl": '3.052rem',
+      "6xl": '3.621rem',
+      "7xl": '4.352rem',
 
     },
 

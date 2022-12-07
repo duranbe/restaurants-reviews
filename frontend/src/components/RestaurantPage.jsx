@@ -122,15 +122,15 @@ export default function RestaurantPage() {
         const Review = "Reviews : " + items.Reviews;
         return (
             <div className='container my-8 mx-auto px-8 py-4'>
-                <div className='flex flex-row space-x-10 pt-4 whitespace-pre'>
+                <div className='flex flex-col md:flex-row space-x-10 pt-4 whitespace-pre'>
 
                     <div className='basis-1/2'>
-                        <div className='font-clash-semibold  text-4xl underline underline-offset-4 items-stretch decoration-tangerine decoration-4 flex flex-row'>
+                        <div className='font-clash-semibold text-2xl md:text-4xl underline underline-offset-4 items-stretch decoration-tangerine decoration-4 flex flex-row'>
                             <div>{items.Name}</div>
                             <StarIcon id={id} />
                         </div>
 
-                        <div className='font-clash-medium pl-4 font-thin text-xl pt-4'>
+                        <div className='font-clash-medium pl-4 font-thin text-lg md:text-xl pt-4'>
                             <div className='py-1'>
                                 {items.Type}
                             </div>
@@ -153,7 +153,7 @@ export default function RestaurantPage() {
 
 
 
-                    <div className='basis-1/2 flex flex-row justify-center pr-8 pt-6'>
+                    <div className='basis-1/2 flex justify-center pr-8 pt-6'>
 
                         {hasIcon && <Icon iconArray={items.icon} />}
 
